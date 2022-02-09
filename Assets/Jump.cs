@@ -15,6 +15,7 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(latesMessage);
         if (latesMessage=="1")
         {
             TryJump();
@@ -23,7 +24,7 @@ public class Jump : MonoBehaviour
     }
     public void TryJump()
     {
-        rb.AddForce(new Vector2(0,100));
+        rb.AddForce(new Vector2(0,10));
     }
     void OnMessageArrived(string msg)
     {
