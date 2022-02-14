@@ -24,7 +24,7 @@ public class MessageTrigger : MonoBehaviour
         {
             serialController.SendSerialMessage("0");
         }
-        Debug.Log(objectNums);
+        //Debug.Log(objectNums);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
