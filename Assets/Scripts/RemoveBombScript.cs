@@ -7,8 +7,9 @@ public class RemoveBombScript : MonoBehaviour
     public float range;
     public LayerMask bombLayer;
     PlayerMoving playerMoving;
-    private bool canDefuse;
+    private bool canDefuse=true;
     public float defuseTime;
+    public string latesMessage;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,8 @@ public class RemoveBombScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        Debug.Log(latesMessage);
+        if (canDefuse&&latesMessage == "1")
         {
             RemoveBomb();
         }
@@ -32,6 +34,10 @@ public class RemoveBombScript : MonoBehaviour
         }
         StartCoroutine(Defuse());
     }
+    void OnMessageArrived(string msg)
+    {
+        latesMessage = msg.Trim();
+    }
     private IEnumerator Defuse()
     {
         playerMoving.SetSpeedZero();
@@ -39,5 +45,12 @@ public class RemoveBombScript : MonoBehaviour
         yield return new WaitForSeconds(defuseTime);
         playerMoving.SetSpeedFull();
         canDefuse = true;
+    }
+    void OnConnectionEvent(bool success)
+    {
+        if (success)
+            Debug.Log("Connection established");
+        else
+            Debug.Log("Connection attempt failed or disconnection detected");
     }
 }
