@@ -20,11 +20,15 @@ public class Jump : MonoBehaviour
         {
             TryJump();
         }
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
         
     }
     public void TryJump()
     {
-        rb.AddForce(new Vector2(0,10));
+        rb.velocity = new Vector2(0,1);
     }
     void OnMessageArrived(string msg)
     {

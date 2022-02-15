@@ -18,11 +18,12 @@ public class MessageTrigger : MonoBehaviour
     {
         if (objectNums>0)
         {
-            serialController.SendSerialMessage("1");
+            serialController.SendSerialMessage("A");
+            Debug.Log("Sended messages");
         }
         else
         {
-            serialController.SendSerialMessage("0");
+            serialController.SendSerialMessage("B");
         }
         //Debug.Log(objectNums);
     }
